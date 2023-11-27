@@ -1,5 +1,7 @@
 <?php
 include 'function/productList.php';
+include 'function/productDelete.php';
+
 ?>
 <h5>This is Product List Page</h5>
 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
@@ -25,13 +27,15 @@ foreach ($products as $key => $product) {
                 <td><?php echo ($product["name"]) ?></td>
                 <td><?php echo ($product["price"]) ?></td>
                 <td><?php echo ($product["description"]) ?></td>
-                <td>
-                    <a href="index.php?page=product-edit&action=<?php echo $product['id'] ?>">
-                        <button type="button" class="btn btn-primary btn-sm">Edit</button>
-                    </a>
-                    <button type="button" class="btn btn-primary btn-sm">Delete</button>
-
-                </td>
+                <form method="POST">
+                    <td>
+                        <a href="index.php?page=product-edit&action=<?php echo $product['id'] ?>">
+                            <button type="button" class="btn btn-primary btn-sm">Edit</button>
+                        </a>
+                        <input type="hidden" name="id" value="<?php echo $product['id'] ?>">
+                        <button type="submit" class="btn btn-primary btn-sm" name="product-delete-btn">Delete</button>
+                    </td>
+                </form>
             </tr>
             <?php
 }
