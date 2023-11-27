@@ -9,6 +9,9 @@ switch ($viewPage) {
     case "product-create";
         $mainPage = "ui/Product/create.php";
         break;
+    case "product-edit";
+        $mainPage = "ui/Product/edit.php";
+        break;
 
     case "category-page";
         $mainPage = "ui/Category/categoryListPage.php";

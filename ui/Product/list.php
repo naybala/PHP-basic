@@ -1,6 +1,5 @@
 <?php
 include 'function/productList.php';
-
 ?>
 <h5>This is Product List Page</h5>
 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
@@ -27,7 +26,9 @@ foreach ($products as $key => $product) {
                 <td><?php echo ($product["price"]) ?></td>
                 <td><?php echo ($product["description"]) ?></td>
                 <td>
-                    <button type="button" class="btn btn-primary btn-sm">Edit</button>
+                    <a href="index.php?page=product-edit&action=<?php echo $product['id'] ?>">
+                        <button type="button" class="btn btn-primary btn-sm">Edit</button>
+                    </a>
                     <button type="button" class="btn btn-primary btn-sm">Delete</button>
 
                 </td>
