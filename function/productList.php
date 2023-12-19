@@ -1,2 +1,2 @@
 <?php
-$products = mysqli_query($connection, "SELECT * FROM product");
+$products = mysqli_query($connection, "SELECT * FROM products");

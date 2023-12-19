@@ -17,6 +17,7 @@
     <?php
 require_once "./ui/MainUi/navPage.php";
 ?>
+
     <?php
 session_start();
 include 'connection/database.php';
