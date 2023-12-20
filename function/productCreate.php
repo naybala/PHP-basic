@@ -3,7 +3,15 @@ if (isset($_POST['product-create-btn'])) {
     $name = $_POST['name'];
     $price = $_POST['price'];
     $description = $_POST['description'];
+    $errorInfo = null;
 
+    if($name == ""){
+        $errorInfo = true;
+    }else{
+        $errorInfo = false;
+    }
+
+   if($errorInfo == false){
     $selectDuplicate = mysqli_query($connection, "SELECT * FROM  products WHERE name = '" . $name . "'");
     $checkDuplicate = mysqli_num_rows($selectDuplicate);
     if ($checkDuplicate > 0) {
@@ -16,21 +24,7 @@ if (isset($_POST['product-create-btn'])) {
             echo "<script>window.location.href='index.php?page=product-page'</script>";
         }
     }
-
-    // if ($name == null || $price == null) {
-    //     $errorInfo = true;
-    // } else {
-    //     $errorInfo = false;
-    // }
-
-    // if ($errorInfo == false) {
-
-    // }
+   }
 }
 
-//Products                    Category
-//id                           id
-//name                         name
-//price
-//description
-//category_id
+// server validation and ui validation.
