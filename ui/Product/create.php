@@ -2,31 +2,68 @@
 include 'function/productCreate.php';
 ?>
 <h5>This is Product Create Page</h5>
+<?php
+if(@$duplicate == true){
+    ?>
+<span class="text-danger validation-alert-duplicate">product name already exist!</span>
+
+<?php
+}
+?>
+
 <br><br>
 <div class="container border p-5">
-    <form action="" method='POST'>
+    <form action="" method='POST' enctype="multipart/form-data">
+        <!-- name -->
         <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Product Name</label>
-            <input type="text" class="form-control" id="product-name" name="name">
-
+            <input type="text" class="form-control" id="product-name" name="name" value="<?php echo @$name?>">
             <?php
-if(@$errorInfo == true){
+if(@$errorName == true){
     ?>
-            <span class="text-danger" id="validation-alert">please fill product name first!</span>
+            <span class="text-danger validation-alert-name">please fill product name first!</span>
 
             <?php
 }
 ?>
-
         </div>
+        <!-- name -->
+
+        <!-- price -->
         <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Product Price</label>
-            <input type="number" class="form-control" id="exampleFormControlInput1" name="price">
+            <input type="number" class="form-control" id="exampleFormControlInput1" name="price"
+                value="<?php echo @$price?>">
+            <?php
+if(@$errorPrice == true){
+    ?>
+            <span class="text-danger validation-alert-price">please fill product price
+                first!</span>
+
+            <?php
+}
+?>
         </div>
+        <!-- price -->
+
+
+
+        <!-- image -->
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Product image</label>
+            <input type="file" class="form-control" id="exampleFormControlInput1" name="priceImage">
+        </div>
+        <!-- image -->
+
+
+        <!-- description -->
         <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Product Description</label>
             <textarea type="text" class="form-control" id="exampleFormControlInput1" name="description"></textarea>
         </div>
+        <!-- description -->
+
+
         <br><br>
         <div class="d-flex float-end gap-5">
             <a href="index.php?page=product-page">
@@ -41,26 +78,21 @@ if(@$errorInfo == true){
 
     <script>
     //querySelector
+    var validationAlertName = document.querySelector(".validation-alert-name");
+    var validationAlertPrice = document.querySelector(".validation-alert-price");
+    var duplicate = document.querySelector(".validation-alert-duplicate");
 
-    var createBtn = document.querySelector(".create-btn");
-    var createBtnReal = document.querySelector(".create-btn-real");
-    var productName = document.querySelector("#product-name");
-    var validationAlert = document.querySelector("#validation-alert");
-    var createProductForm = document.querySelector('#create-product-form');
 
     setTimeout(() => {
-        validationAlert.classList.add('d-none');
+        validationAlertName.classList.add('d-none');
     }, 5000);
 
-    createBtnReal.addEventListener("click", function() {
-        if (productName.value == "") {
-            validationAlert.classList.remove('d-none');
-            setTimeout(() => {
-                validationAlert.classList.add('d-none');
-            }, 5000);
-        } else {
-            createBtn.click();
-        }
-    })
+    setTimeout(() => {
+        validationAlertPrice.classList.add('d-none');
+    }, 5000);
+
+    setTimeout(() => {
+        duplicate.classList.add('d-none');
+    }, 5000);
     </script>
 </div>

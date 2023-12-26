@@ -10,12 +10,13 @@ include 'function/productDelete.php';
     </a>
 </div>
 
-
+<br>
 <div class="container">
     <table class="table table-dark table-hover">
         <tr>
             <th>Name</th>
             <th>Price</th>
+            <th>Image</th>
             <th>Description</th>
             <th class=""></th>
         </tr>
@@ -26,6 +27,7 @@ foreach ($products as $key => $product) {
             <tr>
                 <td><?php echo ($product["name"]) ?></td>
                 <td><?php echo ($product["price"]) ?></td>
+                <td><img src="<?php echo ($product["image"]) ?>" class="img-thumbnail w-25"></td>
                 <td><?php echo ($product["description"]) ?></td>
                 <form method="POST">
                     <td>
