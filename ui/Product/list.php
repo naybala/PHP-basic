@@ -24,12 +24,13 @@ include 'function/productDelete.php';
             <?php
 foreach ($products as $key => $product) {
     ?>
-            <tr>
-                <td><?php echo ($product["name"]) ?></td>
-                <td><?php echo ($product["price"]) ?></td>
-                <td><img src="<?php echo ($product["image"]) ?>" class="img-thumbnail w-25"></td>
-                <td><?php echo ($product["description"]) ?></td>
-                <form method="POST">
+            <form method="POST">
+                <tr>
+                    <td><?php echo ($product["name"]) ?></td>
+                    <td><?php echo ($product["price"]) ?></td>
+                    <td><img src="<?php echo ($product["image"]) ?>" class="img-thumbnail w-25"></td>
+                    <td><?php echo ($product["description"]) ?></td>
+
                     <td>
                         <a href="index.php?page=product-edit&action=<?php echo $product['id'] ?>">
                             <button type="button" class="btn btn-primary btn-sm">Edit</button>
@@ -37,8 +38,9 @@ foreach ($products as $key => $product) {
                         <input type="hidden" name="id" value="<?php echo $product['id'] ?>">
                         <button type="submit" class="btn btn-primary btn-sm" name="product-delete-btn">Delete</button>
                     </td>
-                </form>
-            </tr>
+
+                </tr>
+            </form>
             <?php
 }
 ?>
